@@ -1,0 +1,105 @@
+﻿<Page
+    x:Class="Carpartage.Views.InscriptionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Behaviors="using:Template10.Behaviors"
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Carpartage.Views"
+    xmlns:vm="using:Carpartage.ViewModels"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:SearchViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for narrow view  -->
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for normal view  -->
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for wide view  -->
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <controls:PageHeader x:Name="pageHeader"
+                             RelativePanel.AlignLeftWithPanel="True"
+                             RelativePanel.AlignRightWithPanel="True"
+                             RelativePanel.AlignTopWithPanel="True"
+                             x:Uid="Inscription" Text="">
+        </controls:PageHeader>
+
+        <Grid x:Name="contenu" EntranceNavigationTransitionInfo.IsTargetElement="True"
+                       RelativePanel.AlignBottomWithPanel="True"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignRightWithPanel="True"
+                       RelativePanel.Below="pageHeader">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical">
+                <TextBlock x:Uid="User" Text="" HorizontalAlignment="Center" Margin="15" VerticalAlignment="Center"/>
+                <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,20"/>
+
+                <TextBlock x:Uid="Password" Text=""  HorizontalAlignment="Center" Margin="15" VerticalAlignment="Center"/>
+                <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+                <TextBlock x:Uid="ConfirmPaswd" Text="" HorizontalAlignment="Center" Margin="15" VerticalAlignment="Center"/>
+                <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,20"/>
+
+                <TextBlock x:Uid="Mail" Text="" HorizontalAlignment="Center" Margin="15" VerticalAlignment="Center"/>
+                <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,20"/>
+                <TextBlock x:Uid="NumTel" Text="" HorizontalAlignment="Center" Margin="15" VerticalAlignment="Center"/>
+                <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="30,0,30,0"/>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Grid.Column="1">
+                
+                <TextBlock x:Uid="Street" Text="" HorizontalAlignment="Center" Margin="15" VerticalAlignment="Center"/>
+                <TextBox HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <TextBlock x:Uid="ZipCode" Text="" HorizontalAlignment="Center" Margin="15" VerticalAlignment="Center"/>
+                <TextBox HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <TextBlock x:Uid="City"  Text="" HorizontalAlignment="Center" Margin="15" VerticalAlignment="Center"/>
+                <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0"/>
+            </StackPanel>
+            
+            <Button x:Uid="Validate" Content=""  VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+        </Grid>
+        
+    </RelativePanel>
+</Page>

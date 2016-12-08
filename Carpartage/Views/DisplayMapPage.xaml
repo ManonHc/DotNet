@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="Carpartage.Views.DisplayMapPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Carpartage.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <maps:MapControl x:Name="MapControl1" MapTapped="MapTapped" Loaded="MapLoaded"  MapServiceToken="4jtwYnA6J35eaeNaw9gW ~pFVmCqBmN0h5uyW2bej61g~AuVSXtPRYqY1Oan0sVtiASRAINhnH5iDs3rll529xD8_URNKETQbbhnEii9o6qr7">
+            <!--<maps:MapItemsControl ItemsSource="{Binding StateOverlays}">
+                <maps:MapItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Background="Black" Tapped="Overlay_Tapped">
+                            <TextBlock maps:MapControl.Location="{Binding Location}" Text="{Binding Name}" maps:MapControl.NormalizedAnchorPoint="0.5,0.5" FontSize="20" Margin="5"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </maps:MapItemsControl.ItemTemplate>
+            </maps:MapItemsControl>-->
+            
+        </maps:MapControl>
+    </Grid>
+</Page>

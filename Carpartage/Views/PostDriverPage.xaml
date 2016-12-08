@@ -1,0 +1,149 @@
+﻿<Page
+    x:Class="Carpartage.Views.PostDriverPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Behaviors="using:Template10.Behaviors"
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Carpartage.Views"
+    xmlns:vm="using:Carpartage.ViewModels"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:SearchViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for narrow view  -->
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for normal view  -->
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for wide view  -->
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <controls:PageHeader x:Name="pageHeader"
+                             RelativePanel.AlignLeftWithPanel="True"
+                             RelativePanel.AlignRightWithPanel="True"
+                             RelativePanel.AlignTopWithPanel="True"
+                             x:Uid="AddPostTitle" Text="">
+        </controls:PageHeader>
+        <RelativePanel x:Name="contenu" EntranceNavigationTransitionInfo.IsTargetElement="True"
+                       RelativePanel.AlignBottomWithPanel="True"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignRightWithPanel="True"
+                       HorizontalAlignment="Center"
+                       RelativePanel.Below="pageHeader">
+
+
+            <TextBlock x:Name="image" FontFamily="Segoe MDL2 Assets" Text="&#xE804;" Margin="10,0,0,0" FontSize="30" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+            <Grid x:Name="GridSecond" RelativePanel.Below="image" Margin="0,40,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Vertical" >
+                    <TextBlock x:Uid="Date" HorizontalAlignment="Center" Margin="5"/>
+                    <CalendarDatePicker  HorizontalAlignment="Center" Margin="5"/>
+                </StackPanel>
+                
+            <StackPanel Orientation="Vertical" Grid.Column="1">
+                <TextBlock x:Uid="StartDeparture" Text="" HorizontalAlignment="Center" Margin="5"/>
+                <TimePicker HorizontalAlignment="Center" ClockIdentifier="24HourClock" Margin="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                <TextBlock x:Uid="NbPlace" Text="" VerticalAlignment="Center" Margin="5"/>
+                <TextBox InputScope="AlphanumericFullWidth"  Margin="5" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+                <TextBlock x:Uid="Price" Text="" VerticalAlignment="Center" Margin="5"/>
+                <TextBox InputScope="AlphanumericFullWidth" Margin="5"  VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Orientation="Vertical">
+                <TextBlock x:Uid="DeparturePlace" Text=""  VerticalAlignment="Center" Grid.Row="2" HorizontalAlignment="Center"/>
+                <TextBox Grid.Row="2" VerticalAlignment="Center" Margin="5" HorizontalAlignment="Stretch"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">
+                <TextBlock x:Uid="Detour"  HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                <ComboBox   HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <ComboBoxItem>5 km</ComboBoxItem>
+                    <ComboBoxItem>10km</ComboBoxItem>
+                    <ComboBoxItem>15 km</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="1">
+                <TextBlock x:Uid="Description" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Margin="5"/>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Vertical" Grid.Row="3" Grid.RowSpan="2" HorizontalAlignment="Center">
+                <TextBlock x:Uid="SuperMarket" Text=""/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="5">
+                    <StackPanel >
+                        <CheckBox Content="Aldi"/>
+                        <CheckBox Content="Colruyt"/>
+                        <CheckBox Content="Carrefour"/>
+                        <CheckBox Content="Lidl"/>
+                        <CheckBox Content="Delhaize"/>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox x:Uid="Other" Content=""/>
+                            <TextBox Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center">
+                <TextBlock x:Uid="SizeOfShopping" Text="" />
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="7">
+                    <StackPanel Orientation="Vertical">
+                        <RadioButton x:Uid="Small" Content="" />
+                        <RadioButton x:Uid="Middle" Content="" />
+                        <RadioButton x:Uid="Big" Content=""/>
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+
+        </Grid>
+        <Button x:Uid="AddBtn" Content="" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="GridSecond"/>
+    </RelativePanel>
+    </RelativePanel>
+</Page>
